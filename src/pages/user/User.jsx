@@ -14,28 +14,27 @@ import UserList from '../userList/UserList';
 
 export default function User() {
 
-  const [appointments, setAppointments] = useState([])
+  const [appointments, setAppointments] = useState({})
   const location = useLocation();
   const data = location.state?.data;
+
+
   const fetchPatientAppointments = async (id) =>{
     const response = await api.get(`/user_payment_links/${id}`);
     setAppointments(response.data);
   }
 
   useEffect(()=>{
+    console.log("Patient id", data.id)
     fetchPatientAppointments(data.id)
-  }, [data.id])
+  }, [])
     
 
   return (
     <>
-  
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Patient</h1>
-        {/* <Link to="/newUser">
-          <button className="userAddButton">Create</button>
-        </Link> */}
         <Link to={"/create_appointment/" + data.id} state={{data}}>
             <button className="productAddButton">Create Appointment</button>
         </Link>
@@ -43,11 +42,6 @@ export default function User() {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            {/* <img
-              src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="userShowImg"
-            /> */}
             <div className="userShowTopTitle">
               <span className="userShowUsername">{data.name}</span>
               <span className="userShowUserTitle">Typhoid</span>
@@ -82,14 +76,7 @@ export default function User() {
           <span className="userUpdateTitle">Edit</span>
           <form className="userUpdateForm">
             <div className="userUpdateLeft">
-              <div className="userUpdateItem">
-                <label>Username</label>
-                <input
-                  type="text"
-                  placeholder="annabeck99"
-                  className="userUpdateInput"
-                />
-              </div>
+  
               <div className="userUpdateItem">
                 <label>Full Name</label>
                 <input
@@ -135,12 +122,12 @@ export default function User() {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button type='button' className="userUpdateButton">Update</button>
             </div>
           </form>
         </div>
       </div>
-    <UserList/>
+      <UserList appointments={appointments}/>
     </div>
     </>
   );

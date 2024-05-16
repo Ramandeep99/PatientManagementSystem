@@ -2,6 +2,15 @@ import { useState } from "react";
 import "./newProduct.css";
 import api from "../../api";
 import { useNavigate } from "react-router-dom"
+import {
+  CalendarToday,
+  LocationSearching,
+  MailOutline,
+  PermIdentity,
+  PhoneAndroid,
+  Publish,
+} from '@mui/icons-material';
+
 
 export default function NewProduct() {
   const navigate = useNavigate()
@@ -30,39 +39,76 @@ export default function NewProduct() {
       contact_num: '',
       date_of_birth: ''
     })
-    navigate("/products");
+    navigate("/patients");
   }
 
   return (
     <div className="newProduct">
-      <h1 className="addProductTitle">New Patient</h1>
-      <form className="addProductForm">
+      <div className="userUpdate">
+          <span className="userUpdateTitle">New Patient</span>
+          <form className="userUpdateForm">
+            <div className="userUpdateLeft">
+              <div className="userUpdateItem">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  placeholder="annabeck kaur"
+                  name="name" 
+                  value={formData.name} 
+                  onChange={handleInputChange}
+                  className="userUpdateInput"
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Age</label>
+                <input
+                  type="text"
+                  placeholder="22"
+                  name="age" 
+                  value={formData.age}
+                  onChange={handleInputChange}
+                  className="userUpdateInput"
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>DOB</label>
+                <input
+                  type="text"
+                  placeholder="01-01-2024" 
+                  name="date_of_birth" 
+                  value={formData.date_of_birth} 
+                  onChange={handleInputChange}
+                  className="userUpdateInput"
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  placeholder="+1 123 456 67"
+                  name="contact_num" 
+                  value={formData.contact_num} 
+                  onChange={handleInputChange}
+                  className="userUpdateInput"
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Address</label>
+                <input
+                  type="text"
+                  placeholder="New York | USA"
+                  className="userUpdateInput"
+                />
+              </div>
+            </div>
+            <div className="userUpdateRight">
+              <div className="userUpdateUpload">
+              </div>
+              <button onClick={handleFormSubmit} className="userUpdateButton">Create</button>
 
-        <div className="addProductItem">
-          <label>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleInputChange}/>
+            </div>
+          </form>
         </div>
-        <div className="addProductItem">
-          <label>Age</label>
-          <input type="text" name="age" value={formData.age} onChange={handleInputChange} />
-        </div>
-        <div className="addProductItem">
-          <label>Contact Number</label>
-          <input type="text" name="contact_num" value={formData.contact_num} onChange={handleInputChange} />
-        </div>
-        <div className="addProductItem">
-          <label>DOB</label>
-          <input type="text" placeholder="01-01-2024" name="date_of_birth" value={formData.date_of_birth} onChange={handleInputChange} />
-        </div>
-        {/* <div className="addProductItem">
-          <label>Active</label>
-          <select name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div> */}
-        <button onClick={handleFormSubmit} className="addProductButton">Create</button>
-      </form>
     </div>
   );
 }

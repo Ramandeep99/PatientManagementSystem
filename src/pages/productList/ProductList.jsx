@@ -28,7 +28,6 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            {/* <img className="productListImg" src={params.row.img} alt="" /> */}
             {params.row.name}
           </div>
         );
@@ -80,4 +79,3 @@ export default function ProductList() {
   );
 }
 
-// 8168599706

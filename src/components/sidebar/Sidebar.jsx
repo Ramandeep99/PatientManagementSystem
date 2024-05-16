@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
-import {LineStyle, PermIdentity, Report, Storefront, Timeline, TrendingUp, WorkOutline} from  '@mui/icons-material';
+import {LineStyle, PermIdentity} from  '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
@@ -16,7 +16,7 @@ export default function Sidebar() {
                             Home
                         </li>
                     </Link>
-                    <Link to='products' className='link'>
+                    <Link to='patients' className='link'>
                         <li className="sidebarListItem">
                             <PermIdentity className='sidebarIcons'/>
                             Patients

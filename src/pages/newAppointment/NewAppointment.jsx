@@ -36,7 +36,7 @@ const PaymentComponent = () => {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await api.post('/create_payment_link/', {amount: parseInt(12), user_name: "kjhk", doctor_name: "kjhkjkj", user_id: parseInt(3)});
+      const response = await api.post('/create_payment_link/', {amount: parseInt(formData.amount), user_name: formData.name, doctor_name: formData.doctor_name, user_id: parseInt(id)});
       const data = response.data;
       console.log(data.payment_link);
       // setPaymentLink(data.payment_link);

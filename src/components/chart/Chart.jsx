@@ -14,13 +14,9 @@ export default function Chart({title, data, dataKey, grid}) {
     
   return (
     <div className="chart">
-      {/* <h3 className="chartTitle">{title}</h3>
-      <Link to="/newproduct">
-            <button className="productAddButton">Add Patient</button>
-        </Link> */}
       <div className="productTitleContainer">
         <h1 className="chartTitle">{title}</h1>
-        <Link to="/newproduct">
+        <Link to="/newpatient">
           <button className="productAddButton">Add new Patient</button>
         </Link>
       </div>

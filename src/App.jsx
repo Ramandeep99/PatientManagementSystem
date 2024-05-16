@@ -15,15 +15,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement: <ErrorPage />,
     children: [
       { path: "", element: <Home /> },
       { path: "users", element: <UserList /> },
       { path: "user/:userID", element: <User /> },
       {path: 'newUser', element: <NewUser/>},
-      {path: 'products', element: <ProductList/>},
+      {path: 'patients', element: <ProductList/>},
       { path: "product/:productID", element: <Product  /> },
-      {path: 'newProduct', element: <NewProduct/>},
+      {path: 'newpatient', element: <NewProduct/>},
       {path: 'create_appointment/:id', element: <PaymentComponent/>},
     ],
   },

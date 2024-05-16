@@ -1,72 +1,39 @@
 import "./userList.css";
-import { DeleteOutline} from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
 
-import { Link } from "react-router-dom";
-import { userRows } from "../../dummyData";
-import { useState } from "react";
-
-export default function UserList() {
-    const [data, setData] = useState(userRows)
-
-    const handleDelete = (id) =>{
-        console.log(id) 
-        setData(data.filter(item =>  item.id !== id))
-    }
+export default function UserList({appointments}) {
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "user",
-      headerName: "User",
+      field: "doctor_name",
+      headerName: "Doctor Name",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
-            {params.row.username}
+            {params.row.doctor_name}
           </div>
         );
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
     {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
-    {
-      field: "transaction",
-      headerName: "Transaction Volume",
+      field: "amount",
+      headerName: "Transaction Amount",
       width: 160,
     },
-    { field: "date", headerName: "Added Date", width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="date">
-            {params.row.date}
-          </div>
-        );
-      },
-    },
     {
-      field: "action",
-      headerName: "Action",
-      width: 150,
+      field: "payment_link",
+      headerName: "Payment Link",
+      width: 160,
       renderCell: (params) => {
         return (
-            <>
-            <Link to={"/user/" + params.row.id}>
-              <button className="userListEdit">Edit</button>
-            </Link>
-            <DeleteOutline
-              className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
-          </>
+          <a className="userListUser" href={params.row.payment_link} target="_blank">
+            Payment Link
+          </a>
         );
-      },
-    },
+      }
+    }
   ];
 
   return (
@@ -74,11 +41,10 @@ export default function UserList() {
     <div className="userList">
     <h2 className="headerUserlist">Appointments</h2>
       <DataGrid
-        rows={data}
+        rows={appointments}
         disableSelectionOnClick
         columns={columns}
         pageSize={4}
-        // checkboxSelection
         />
     </div>
      </>
