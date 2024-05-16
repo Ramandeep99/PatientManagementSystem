@@ -1,4 +1,3 @@
-# React Project README
 
 ## Requirements
 - Node.js should be installed on your machine.
