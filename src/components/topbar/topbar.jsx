@@ -7,15 +7,11 @@ export default function Topbar() {
     <div className='topbar'>
         <div className="topbarWrapper">
             <div className="topLeft">
-                <span className='logo'>lamaadmin</span>
+                <span className='logo'>PMange</span>
             </div>
             <div className="topRight">
                 <div className="topbarIconContainer">
                     < NotificationsNone />
-                    <span className="topIconBag">2 </span>
-                </div>
-                <div className="topbarIconContainer">
-                    < Language />
                     <span className="topIconBag">2 </span>
                 </div>
                 <div className="topbarIconContainer">

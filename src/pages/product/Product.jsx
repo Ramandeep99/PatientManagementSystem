@@ -1,49 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import "./product.css";
 import Chart from "../../components/chart/Chart"
 import {productData} from "../../dummyData"
 import { Publish} from '@mui/icons-material';
+import { useEffect, useState } from "react";
+import api from "../../api";
 
 
 export default function Product() {
+
+  const [appointments, setAppointments] = useState([])
+  const location = useLocation();
+  const data = location.state?.data;
+  const fetchPatientAppointments = async (id) =>{
+    // console.log(data.id)
+    const response = await api.get(`/user_payment_links/${id}`);
+    setAppointments(response.data);
+  }
+
+  useEffect(()=>{
+    fetchPatientAppointments(data.id)
+  }, [data.id])
+    
   return (
     <div className="product">
       <div className="productTitleContainer">
-        <h1 className="productTitle">Product</h1>
-        <Link to="/newproduct">
-          <button className="productAddButton">Create</button>
+        <h1 className="productTitle">Patient</h1>
+        <Link to={"/create_appointment/" + data.id}>
+            <button className="productAddButton">Create Appointment</button>
         </Link>
       </div>
       <div className="productTop">
-          <div className="productTopLeft">
-              <Chart data={productData} dataKey="Sales" title="Sales Performance"/>
-          </div>
+
           <div className="productTopRight">
-              <div className="productInfoTop">
-                  <img src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="productInfoImg" />
-                  <span className="productName">Apple Airpods</span>
-              </div>
+              
               <div className="productInfoBottom">
                   <div className="productInfoItem">
-                      <span className="productInfoKey">id:</span>
-                      <span className="productInfoValue">123</span>
+                      <span className="productInfoKey">Patient Id:</span>
+                      <span className="productInfoValue">{data.id}</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">sales:</span>
-                      <span className="productInfoValue">5123</span>
+                      <span className="productInfoKey">Name:</span>
+                      <span className="productInfoValue">{data.name}</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">active:</span>
-                      <span className="productInfoValue">yes</span>
+                      <span className="productInfoKey">DOB:</span>
+                      <span className="productInfoValue">{data.date_of_birth}</span>
                   </div>
                   <div className="productInfoItem">
-                      <span className="productInfoKey">in stock:</span>
-                      <span className="productInfoValue">no</span>
+                      <span className="productInfoKey">Contact:</span>
+                      <span className="productInfoValue">{data.contact_num}</span>
                   </div>
               </div>
+              <ul>
+                    {appointments.map(data =>(
+                        <li><a href={data} >Payment Link</a></li>
+                    ))}
+                </ul>
           </div>
       </div>
-      <div className="productBottom">
+      {/* <div className="productBottom">
           <form className="productForm">
               <div className="productFormLeft">
                   <label>Product Name</label>
@@ -70,7 +86,7 @@ export default function Product() {
                   <button className="productButton">Update</button>
               </div>
           </form>
-      </div>
+      </div> */}
     </div>
   );
 }

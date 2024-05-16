@@ -9,6 +9,7 @@ import NewUser from './pages/newUser/NewUser';
 import ProductList from './pages/productList/ProductList';
 import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
+import PaymentComponent from './pages/newAppointment/NewAppointment';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       {path: 'products', element: <ProductList/>},
       { path: "product/:productID", element: <Product  /> },
       {path: 'newProduct', element: <NewProduct/>},
+      {path: 'create_appointment/:id', element: <PaymentComponent/>},
     ],
   },
 ]);

@@ -16,69 +16,12 @@ export default function Sidebar() {
                             Home
                         </li>
                     </Link>
-                    <li className="sidebarListItem">
-                        <Timeline className='sidebarIcons'/>
-                        Analytics
-                    </li>
-                    <li className="sidebarListItem">
-                        <TrendingUp className='sidebarIcons'/>
-                        Sales
-                    </li>
-                </ul>
-            </div>
-            <div className="sidebarMenu">
-                <h3 className="sidebarTitle">Quiz Menu</h3>
-                <ul className="sidebarList">
-                    <Link to='users' className='link'>
-                        <li className="sidebarListItem">
-                            <PermIdentity className='sidebarIcons'/>
-                            Users
-                        </li>
-                    </Link>
                     <Link to='products' className='link'>
                         <li className="sidebarListItem">
-                            <Storefront className='sidebarIcons'/>
-                            Products
+                            <PermIdentity className='sidebarIcons'/>
+                            Patients
                         </li>
                     </Link>
-                    <li className="sidebarListItem">
-                        <TrendingUp className='sidebarIcons'/>
-                        Transactions
-                    </li>
-                </ul>
-            </div>
-            <div className="sidebarMenu">
-                <h3 className="sidebarTitle">Notifications</h3>
-                <ul className="sidebarList">
-                    <li className="sidebarListItem">
-                        <LineStyle className='sidebarIcons'/>
-                        Mail
-                    </li>
-                    <li className="sidebarListItem">
-                        <Timeline className='sidebarIcons'/>
-                        Feedback
-                    </li>
-                    <li className="sidebarListItem">
-                        <TrendingUp className='sidebarIcons'/>
-                        Reports
-                    </li>
-                </ul>
-            </div>
-            <div className="sidebarMenu">
-                <h3 className="sidebarTitle">Staff</h3>
-                <ul className="sidebarList">
-                    <li className="sidebarListItem">
-                        <WorkOutline className='sidebarIcons'/>
-                        Manage
-                    </li>
-                    <li className="sidebarListItem">
-                        <Timeline className='sidebarIcons'/>
-                        Analytics
-                    </li>
-                    <li className="sidebarListItem">
-                        <Report className='sidebarIcons'/>
-                        Reports
-                    </li>
                 </ul>
             </div>
         </div>

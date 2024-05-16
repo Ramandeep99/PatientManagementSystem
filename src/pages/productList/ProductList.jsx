@@ -19,10 +19,6 @@ export default function ProductList() {
     fetchPatientsData();
   }, [])
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -54,16 +50,6 @@ export default function ProductList() {
         );
       },
     },
-    
-    { field: "date", headerName: "Added Date", width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="date">
-            {params.row.date}
-          </div>
-        );
-      },
-    },
 
     {
       field: "action",
@@ -72,13 +58,9 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
+            <Link to={"/user/" + params.row.id} state={{ data: params.row }}>
+              <button className="productListEdit" >View</button>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
           </>
         );
       },

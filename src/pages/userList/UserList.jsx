@@ -70,14 +70,17 @@ export default function UserList() {
   ];
 
   return (
+    <>
     <div className="userList">
+    <h2 className="headerUserlist">Appointments</h2>
       <DataGrid
         rows={data}
         disableSelectionOnClick
         columns={columns}
         pageSize={4}
         // checkboxSelection
-      />
+        />
     </div>
+     </>
   );
 }
